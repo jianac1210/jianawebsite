@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="專業、認真的顧問師陳嘉娜個人電子名片。">
+  <title>陳嘉娜｜顧問師</title>
+  <link rel="icon" href="/favicon.svg">
+  <style>
+    :root{--ink:#1f1c1b;--muted:#736b67;--cream:#f8f4ed;--paper:rgba(255,255,255,.66);--coral:#f07c68;--peach:#f6b59f;--line:rgba(44,35,31,.13)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,"PingFang TC","Noto Sans TC",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}main{min-height:100vh;overflow:hidden;position:relative}
+    .ambient{position:absolute;border-radius:999px;filter:blur(2px);pointer-events:none}.ambientOne{width:390px;height:390px;top:70px;right:-170px;background:rgba(240,124,104,.15)}.ambientTwo{width:230px;height:230px;top:580px;left:-150px;background:rgba(246,181,159,.22)}
+    .topbar{max-width:1160px;margin:0 auto;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}.brand{display:inline-flex;align-items:center;gap:11px;font-size:13px;font-weight:800;letter-spacing:.22em}.brandDot{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:white;font-family:Georgia,serif;font-size:19px;font-style:italic}.miniContact{font-size:13px;font-weight:700;padding:10px 16px;border:1px solid var(--line);border-radius:999px;transition:.25s ease}.miniContact:hover{color:white;background:var(--ink);transform:translateY(-2px)}
+    .hero{max-width:1160px;margin:0 auto;padding:42px 32px 104px;position:relative;z-index:1}.badge{width:max-content;margin:0 auto 44px;padding:12px 20px 11px;transform:rotate(-3deg);display:flex;align-items:center;gap:9px;color:#fff;background:var(--coral);border:3px solid var(--ink);border-radius:18px 18px 22px 14px;box-shadow:5px 6px 0 var(--ink);font-weight:900;font-size:22px;letter-spacing:.06em}.badgeSpark{color:#ffe4a1;font-size:16px}.badgeName{font-style:italic}.badgeSmile{font-size:20px;transform:rotate(6deg)}
+    .profileGrid{display:grid;grid-template-columns:minmax(340px,.92fr) 1.08fr;gap:8%;align-items:center}.portraitWrap{max-width:490px;position:relative;justify-self:center}.portraitHalo{position:absolute;inset:-28px -23px 20px;border-radius:44% 56% 50% 50%;border:1.5px solid rgba(240,124,104,.5);transform:rotate(-4deg)}.portraitFrame{position:relative;overflow:hidden;aspect-ratio:1;border-radius:46% 54% 48% 52%/55% 45% 55% 45%;background:#f4d6c9;box-shadow:0 28px 70px rgba(78,50,37,.15);transform:rotate(2deg)}.portraitFrame img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.025) rotate(-2deg)}.portraitTag{position:absolute;right:-26px;bottom:34px;padding:10px 15px;border-radius:999px;color:#fff;background:var(--ink);font-size:10px;letter-spacing:.1em;text-transform:uppercase;transform:rotate(5deg)}
+    .eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 24px;font-size:11px;font-weight:800;letter-spacing:.19em;text-transform:uppercase;color:var(--muted)}.eyebrow span{width:29px;height:2px;background:var(--coral)}.intro h1{margin:0;font-size:clamp(66px,7vw,104px);line-height:.9;letter-spacing:-.08em;font-weight:800}.role{margin:18px 0 42px;color:var(--coral);font-size:18px;font-weight:700;letter-spacing:.2em}.statement{margin:0;font-family:"Microsoft JhengHei","微軟正黑體","PingFang TC",Arial,sans-serif;font-size:clamp(29px,3vw,43px);line-height:1.38;letter-spacing:-.04em}.statement span{position:relative;white-space:nowrap}.statement span::after{content:"";position:absolute;height:8px;border-radius:9px;background:rgba(240,124,104,.33);bottom:1px;left:-2px;right:-4px;z-index:-1;transform:rotate(-2deg)}.bio{max-width:500px;margin:26px 0 0;color:var(--muted);font-size:15px;line-height:1.9}.actions{display:flex;gap:12px;margin-top:34px}.actions a{min-height:52px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;gap:24px;border-radius:999px;font-size:14px;font-weight:700;transition:.25s ease}.primaryAction{background:var(--ink);color:#fff}.secondaryAction{border:1px solid var(--line);background:rgba(255,255,255,.45)}.actions a:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(38,31,28,.13)}.arrow{font-size:18px;font-weight:400;transition:transform .2s ease}a:hover .arrow{transform:translate(2px,-2px)}
+    .connect{max-width:1160px;margin:0 auto 38px;padding:68px;display:grid;grid-template-columns:.8fr 1.2fr;gap:11%;background:var(--paper);border:1px solid rgba(255,255,255,.9);border-radius:42px;box-shadow:0 18px 60px rgba(65,48,38,.08);backdrop-filter:blur(20px);position:relative;z-index:1}.sectionKicker{margin:0 0 25px;color:var(--coral);font-size:10px;font-weight:900;letter-spacing:.22em}.sectionLead h2{margin:0;font-family:"Microsoft JhengHei","微軟正黑體","PingFang TC",Arial,sans-serif;font-size:clamp(31px,3.5vw,47px);line-height:1.3;letter-spacing:-.04em}.linkList{border-top:1px solid var(--line)}.linkList>a{display:grid;grid-template-columns:44px 1fr auto;gap:17px;align-items:center;padding:22px 4px;border-bottom:1px solid var(--line);transition:.2s ease}.linkList>a:hover{padding-left:10px;color:var(--coral)}.linkIcon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;color:white;font-size:18px;font-weight:900}.facebook{background:#1877f2}.line{background:#06c755;font-size:14px}.email{background:var(--coral)}.linkText{min-width:0;display:flex;flex-direction:column;gap:4px}.linkText small{color:var(--muted);font-size:11px}.linkText strong{overflow-wrap:anywhere;font-size:15px;letter-spacing:-.01em}
+    footer{max-width:1160px;margin:0 auto;padding:28px 32px 40px;display:flex;justify-content:space-between;color:#988f89;font-size:10px;font-weight:700;letter-spacing:.16em}.footerMark{letter-spacing:.06em}.footerMark i{color:var(--coral);font-style:normal}
+    @media(max-width:800px){.topbar{padding:22px 20px}.brand{font-size:11px}.miniContact{padding:9px 13px}.hero{padding:24px 20px 70px}.badge{margin-bottom:49px;transform:rotate(-3deg) scale(.9)}.profileGrid{grid-template-columns:1fr;gap:62px}.portraitWrap{width:min(84vw,430px)}.portraitTag{right:-6px;bottom:21px}.intro{text-align:center}.eyebrow{justify-content:center}.intro h1{font-size:clamp(64px,20vw,92px)}.role{margin-bottom:31px}.statement{font-size:clamp(29px,8.4vw,40px)}.bio{margin-left:auto;margin-right:auto}.actions{justify-content:center;flex-wrap:wrap}.connect{margin:0 14px 24px;padding:42px 24px;grid-template-columns:1fr;gap:42px;border-radius:30px}.sectionLead{text-align:center}footer{padding:25px 20px 32px}}
+    @media(max-width:440px){.actions{flex-direction:column}.actions a{width:100%}.connect{padding:36px 19px}footer{flex-direction:column;align-items:center;gap:9px}}
+    @media(prefers-reduced-motion:no-preference){.badge{animation:float 4.5s ease-in-out infinite}.portraitWrap{animation:reveal .8s cubic-bezier(.2,.8,.2,1) both}.intro{animation:reveal .8s .12s cubic-bezier(.2,.8,.2,1) both}@keyframes float{50%{transform:rotate(1deg) translateY(-6px)}}@keyframes reveal{from{opacity:0;transform:translateY(24px)}}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="ambient ambientOne"></div><div class="ambient ambientTwo"></div>
+    <header class="topbar">
+      <a class="brand" href="#profile" aria-label="回到陳嘉娜電子名片首頁"><span class="brandDot">J</span><span>JIANA</span></a>
+      <a class="miniContact" href="mailto:jiana1210@gmail.com">聯絡我 <span aria-hidden="true">↗</span></a>
+    </header>
+    <section class="hero" id="profile">
+      <div class="badge" aria-label="NANA"><span class="badgeSpark">✦</span><span class="badgeName">NANA</span><span class="badgeSmile">⌣</span></div>
+      <div class="profileGrid">
+        <div class="portraitWrap">
+          <div class="portraitHalo"></div>
+          <div class="portraitFrame"><img src="/jiana-cartoon.png" alt="陳嘉娜的卡通風格大頭貼" width="900" height="900"></div>
+          <span class="portraitTag">Professional consultant</span>
+        </div>
+        <div class="intro">
+          <p class="eyebrow"><span></span> Consultant · Taipei</p>
+          <h1>陳嘉娜</h1><p class="role">顧問師</p>
+          <p class="statement">以專業梳理複雜，<br>用認真成就<span>每一次合作。</span></p>
+          <p class="bio">專業、認真。傾聽需求，聚焦關鍵，陪你把想法走成清晰可行的下一步。</p>
+          <div class="actions">
+            <a class="primaryAction" href="mailto:jiana1210@gmail.com">開始合作 <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="secondaryAction" href="/jiana-chen.vcf" download>＋ 儲存名片</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="connect" aria-labelledby="connect-title">
+      <div class="sectionLead"><p class="sectionKicker">LET’S CONNECT</p><h2 id="connect-title">保持聯繫，<br>從一聲你好開始。</h2></div>
+      <div class="linkList">
+        <a href="https://www.facebook.com/jiana1210/" target="_blank" rel="noreferrer"><span class="linkIcon facebook">f</span><span class="linkText"><small>Facebook 專頁</small><strong>https://www.facebook.com/jiana1210/</strong></span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a href="https://line.me/ti/p/~jiana1210" target="_blank" rel="noreferrer"><span class="linkIcon line">L</span><span class="linkText"><small>LINE 官方帳號</small><strong>jiana1210</strong></span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a href="mailto:jiana1210@gmail.com"><span class="linkIcon email">@</span><span class="linkText"><small>合作電子郵件</small><strong>jiana1210@gmail.com</strong></span><span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    <footer><span>© <span id="year">2026</span> CHEN JIANA</span><span class="footerMark">專業 × 認真 <i>♥</i></span></footer>
+  </main>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
