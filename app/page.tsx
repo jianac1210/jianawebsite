@@ -76,7 +76,7 @@ export default function Home() {
         <div className="linkList">
           <a href="https://www.facebook.com/jiana1210/" target="_blank" rel="noreferrer">
             <span className="linkIcon facebook">f</span>
-            <span className="linkText"><small>Facebook 專頁</small><strong>OOO</strong></span>
+            <span className="linkText"><small>Facebook 專頁</small><strong>https://www.facebook.com/jiana1210/</strong></span>
             <Arrow />
           </a>
           <a href="https://line.me/ti/p/~jiana1210" target="_blank" rel="noreferrer">
