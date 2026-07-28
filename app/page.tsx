@@ -24,9 +24,9 @@ export default function Home() {
       </header>
 
       <section className="hero" id="profile">
-        <div className="badge" aria-label="OOO">
+        <div className="badge" aria-label="NANA">
           <span className="badgeSpark">✦</span>
-          <span>OOO</span>
+          <span className="badgeName">NANA</span>
           <span className="badgeSmile">⌣</span>
         </div>
 

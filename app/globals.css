@@ -47,6 +47,7 @@ main { min-height: 100vh; overflow: hidden; position: relative; }
   box-shadow: 5px 6px 0 var(--ink); font-weight: 900; font-size: 22px; letter-spacing: .06em;
 }
 .badgeSpark { color: #ffe4a1; font-size: 16px; }
+.badgeName { font-style: italic; }
 .badgeSmile { font-size: 20px; transform: rotate(6deg); }
 .profileGrid { display: grid; grid-template-columns: minmax(340px, .92fr) 1.08fr; gap: 8%; align-items: center; }
 .portraitWrap { max-width: 490px; position: relative; justify-self: center; }
@@ -67,7 +68,7 @@ main { min-height: 100vh; overflow: hidden; position: relative; }
 .eyebrow span { width: 29px; height: 2px; background: var(--coral); }
 .intro h1 { margin: 0; font-size: clamp(66px, 7vw, 104px); line-height: .9; letter-spacing: -.08em; font-weight: 800; }
 .role { margin: 18px 0 42px; color: var(--coral); font-size: 18px; font-weight: 700; letter-spacing: .2em; }
-.statement { margin: 0; font-family: Georgia, "Noto Serif TC", serif; font-size: clamp(29px, 3vw, 43px); line-height: 1.38; letter-spacing: -.04em; }
+.statement { margin: 0; font-family: "Microsoft JhengHei", "微軟正黑體", "PingFang TC", Arial, sans-serif; font-size: clamp(29px, 3vw, 43px); line-height: 1.38; letter-spacing: -.04em; }
 .statement span { position: relative; white-space: nowrap; }
 .statement span::after { content: ""; position: absolute; height: 8px; border-radius: 9px; background: rgba(240,124,104,.33); bottom: 1px; left: -2px; right: -4px; z-index: -1; transform: rotate(-2deg); }
 .bio { max-width: 500px; margin: 26px 0 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
@@ -87,7 +88,7 @@ a:hover .arrow { transform: translate(2px,-2px); }
   position: relative; z-index: 1;
 }
 .sectionKicker { margin: 0 0 25px; color: var(--coral); font-size: 10px; font-weight: 900; letter-spacing: .22em; }
-.sectionLead h2 { margin: 0; font-family: Georgia, "Noto Serif TC", serif; font-size: clamp(31px, 3.5vw, 47px); line-height: 1.3; letter-spacing: -.04em; }
+.sectionLead h2 { margin: 0; font-family: "Microsoft JhengHei", "微軟正黑體", "PingFang TC", Arial, sans-serif; font-size: clamp(31px, 3.5vw, 47px); line-height: 1.3; letter-spacing: -.04em; }
 .linkList { border-top: 1px solid var(--line); }
 .linkList > a { display: grid; grid-template-columns: 44px 1fr auto; gap: 17px; align-items: center; padding: 22px 4px; border-bottom: 1px solid var(--line); transition: .2s ease; }
 .linkList > a:hover { padding-left: 10px; color: var(--coral); }
