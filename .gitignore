@@ -38,6 +38,8 @@ yarn-error.log*
 # typescript
 next-env.d.ts
 /dist/
+/netlify-dist/
+/121127198_10157766679348131_5816875745161930610_n.jpg
 /.wrangler/
 /outputs/
 /work/
