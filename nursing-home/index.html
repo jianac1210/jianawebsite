@@ -114,7 +114,7 @@ footer a{color:var(--accent)}
 <div class="qcards">
   <div class="card"><b>Q1 資源分布</b><p>各縣市每千名 65 歲以上長者有幾張一般護理之家床位？哪些地區相對不足？</p><div class="ans" id="a1"></div></div>
   <div class="card"><b>Q2 114 年度評鑑結果</b><p>114 年度評鑑不合格的機構集中在哪些縣市？機構規模、類型與結果有沒有關聯？</p><div class="ans" id="a2"></div></div>
-  <div class="card"><b>Q3 評鑑排程</b><p>依合格效期推算，未來四年每年各有多少機構要受評？可做為委員人力與時程規劃依據。</p><div class="ans" id="a3"></div></div>
+  <div class="card"><b>Q3 評鑑排程</b><p>依合格效期推算，115～124 年每年各有多少機構要受評？116 年起效期改為 6 年會有什麼影響？</p><div class="ans" id="a3"></div></div>
 </div>
 
 <h2>雛形成果</h2>
@@ -165,11 +165,16 @@ footer a{color:var(--accent)}
 </div>
 <p class="insight" id="ins2"></p>
 
-<h2 id="q3">Q3｜未來評鑑排程推估</h2>
-<p class="sub">合格效期到期的年度即為下次受評年度；前次評鑑不合格者，假設於 115 年度再受評。</p>
+<h2 id="q3">Q3｜未來評鑑排程推估（含 6 年效期情境）</h2>
+<p class="sub">衛福部已預告修正《護理機構評鑑辦法》，評鑑合格效期由 4 年改為 6 年。本頁假設 116 年度起受評合格者適用 6 年效期，並與現制 4 年比較。</p>
 <div class="card">
-  <svg id="due" width="100%" role="img" aria-label="115至118年度應受評機構數"></svg>
-  <div class="legend"><span><i class="sw" style="background:var(--series-1)"></i>合格效期到期</span><span><i class="sw" style="background:var(--series-2)"></i>前次評鑑不合格</span></div>
+  <div class="toggle" role="group" aria-label="效期情境">
+    <button id="bt-six" aria-pressed="true">新制：116 年起效期 6 年</button>
+    <button id="bt-four" aria-pressed="false">現制：效期 4 年</button>
+  </div>
+  <svg id="due" width="100%" role="img" aria-label="115至124年度應受評機構數推估"></svg>
+  <div class="legend"><span><i class="sw" style="background:var(--series-1)"></i>合格效期到期</span><span><i class="sw" style="background:var(--series-2)"></i>前次評鑑不合格</span><span><i class="sw" style="background:transparent;border:1.5px dashed var(--text-secondary)"></i><span id="ghostlbl">另一情境</span></span></div>
+  <p class="note" style="margin:8px 0 0">推估假設：115～118 年依各機構已核定的合格效期；之後假設受評機構皆合格，下次受評年度＝受評年度＋效期年數（115 年受評者仍為 4 年）。未計入新設立、歇業機構，以及不合格機構再評合格後縮短的效期（新制為 1～5 年）。</p>
 </div>
 <p class="insight" id="ins3"></p>
 
@@ -188,7 +193,7 @@ footer a{color:var(--accent)}
 <ol class="method" style="margin-top:16px">
   <li><b>使用的生成式 AI 技巧：</b>以對話方式描述需求，由 AI 撰寫資料清理程式與網頁（vibe coding）；期末預計把「評鑑名單 PDF 轉 CSV」寫成可重複使用的 skill，每年公告後一鍵更新。</li>
   <li><b>資料驗證：</b>全國 65 歲以上人口加總 4,673,155 人，與內政部公布數字一致；機構筆數與清冊原檔一致（501 家）；其中 1 家已歇業，不納入分析，實際分析 500 家。</li>
-  <li><b>限制：</b>本專案只計一般護理之家，不含老人福利機構、住宿式長照機構與榮譽國民之家，因此臺北市等住宿式機構較多的縣市，床位密度會被低估；機構類型以名稱是否含「附設」粗分；不合格機構的再評年度為推估值。</li>
+  <li><b>限制：</b>本專案只計一般護理之家，不含老人福利機構、住宿式長照機構與榮譽國民之家，因此臺北市等住宿式機構較多的縣市，床位密度會被低估；機構類型以名稱是否含「附設」粗分；不合格機構的再評年度為推估值；Q3 的 6 年效期情境依衛福部預告之修正草案，假設 116 年度起適用，實際以正式公告條文為準。</li>
 </ol>
 
 <h2>期末延伸規劃</h2>
@@ -198,6 +203,7 @@ footer a{color:var(--accent)}
     <li>加入住宿式長照機構、老人福利機構床位，計算完整的長照住宿資源密度。</li>
     <li>串接「一般護理之家護理人員及照顧服務員人力統計」，觀察人力配置與評鑑結果的關係。</li>
     <li>以 Tableau Public 重建儀表板並嵌入個人網站。</li>
+    <li>追蹤《護理機構評鑑辦法》修正條文正式公告的施行日期，並納入不合格機構再評合格後的縮短效期（1～5 年），更新 Q3 推估。</li>
   </ol>
 </div>
 
@@ -205,6 +211,7 @@ footer a{color:var(--accent)}
   <p><b>資料來源：</b>
   <a href="https://data.gov.tw/dataset/115950">全國開業護理機構清冊（衛生福利部護理及健康照護司，政府資料開放平臺）</a>；
   <a href="https://www.mohw.gov.tw/cp-189-222-1.html">衛生福利部護理機構評鑑結果名單</a>；
+  <a href="https://www.mohw.gov.tw/dl-100209-56a9bbed-be03-4a9a-bf9f-120467190e90.html">衛生福利部《護理機構評鑑辦法》修正草案說明</a>；
   <a href="https://data.gov.tw/dataset/14224">內政部人口數三段年齡組─按區域別分</a>；
   縣市界線：taiwan-atlas（MIT 授權，資料源自內政部國土測繪中心）。</p>
   <p>本頁為課程期中雛形，數字僅供教學與分析參考，正式資訊以主管機關公告為準。</p>
@@ -362,29 +369,54 @@ document.getElementById('types').innerHTML = Q.types.map(t => `${t.type}：受�
 const q2most = fr[0];
 document.getElementById('ins2').innerHTML = `<b>初步發現：</b>114 年度不合格以${q2most.county}最多（${q2most.failed} 家，占該市受評機構 ${rt(q2most.failed, q2most.n).toFixed(0)}%）。未滿 100 床的機構不合格比率約 18%（未滿 50 床 ${Q.size[0].fail_rate.toFixed(1)}%、50–99 床 ${Q.size[1].fail_rate.toFixed(1)}%），100 床以上明顯較低，150 床以上沒有不合格；獨立型（${Q.types.find(x => x.type === '獨立型').fail_rate.toFixed(1)}%）也高於醫院／法人附設型（${Q.types.find(x => x.type !== '獨立型').fail_rate.toFixed(1)}%）。這可能和中小型、獨立經營機構的人力與管理資源較少有關，值得期末進一步分析。部分縣市受評家數少，比率容易波動，解讀時宜一併看家數。`;
 
-// ---------- Q3 ----------
+// ---------- Q3 (projection 115-124, 4y vs 6y from 116) ----------
+const YRS = d3.range(115, 125);
+function project(six){
+  const out = Object.fromEntries(YRS.map(y => [y, {y, a: 0, b: 0, src: []}]));
+  [115, 116, 117, 118].forEach(y => { out[y].a += DATA.due[y] || 0; out[y].src.push(`已核定效期到期 ${DATA.due[y] || 0} 家`); });
+  out[115].b = N.failed; out[115].src.push(`114 年度不合格再評 ${N.failed} 家`);
+  YRS.forEach(y => { const tot = out[y].a + out[y].b, L = six && y >= 116 ? 6 : 4, ny = y + L;
+    if (tot > 0 && out[ny]) { out[ny].a += tot; out[ny].src.push(`${y} 年受評 ${tot} 家，效期 ${L} 年到期`); } });
+  return YRS.map(y => out[y]);
+}
+const P6 = project(true), P4 = project(false);
 (function(){
-  const yrs = [115, 116, 117, 118];
-  const rows = yrs.map(y => ({y, a: DATA.due[y] || 0, b: y === 115 ? N.failed : 0}));
-  const W = 900, H = 230, L = 40, B = 30, T = 24;
+  const W = 900, H = 250, L = 40, B = 30, T = 26;
   const svg = d3.select('#due').attr('viewBox', `0 0 ${W} ${H}`);
-  const x = d3.scaleBand().domain(yrs).range([L, W - 10]).padding(.45);
-  const y = d3.scaleLinear().domain([0, 220]).range([H - B, T]);
+  const x = d3.scaleBand().domain(YRS).range([L, W - 10]).padding(.35);
+  const y = d3.scaleLinear().domain([0, 230]).range([H - B, T]);
   svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1', L).attr('x2', W - 10).attr('y1', d => y(d)).attr('y2', d => y(d)).attr('stroke', 'var(--grid)');
   svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x', L - 6).attr('y', d => y(d) + 4).attr('text-anchor', 'end').text(d => d);
-  const g = svg.append('g').selectAll('g').data(rows).join('g');
-  const bw = x.bandwidth();
-  g.append('rect').attr('x', d => x(d.y)).attr('width', bw).attr('y', d => y(d.a)).attr('height', d => y(0) - y(d.a)).attr('fill', 'var(--series-1)').attr('rx', 0);
-  g.filter(d => d.b > 0).append('path').attr('fill', 'var(--series-2)').attr('d', d => { const y0 = y(d.a) - 2, y1 = y(d.a + d.b), rr = 4; return `M${x(d.y)},${y0}V${y1 + rr}a${rr},${rr} 0 0 1 ${rr},-${rr}h${bw - 2 * rr}a${rr},${rr} 0 0 1 ${rr},${rr}V${y0}z`; });
-  g.filter(d => d.b === 0).append('path').attr('fill', 'var(--series-1)').attr('d', d => { const y1 = y(d.a), rr = 4; return `M${x(d.y)},${y1 + rr}a${rr},${rr} 0 0 1 ${rr},-${rr}h${bw - 2 * rr}a${rr},${rr} 0 0 1 ${rr},${rr}V${y1 + 6}H${x(d.y)}z`; });
-  g.append('text').attr('class', 'lbl').attr('x', d => x(d.y) + bw / 2).attr('y', d => y(d.a + d.b) - 8).attr('text-anchor', 'middle').style('font-weight', 600).text(d => d.a + d.b + ' 家');
-  g.append('text').attr('x', d => x(d.y) + bw / 2).attr('y', H - 8).attr('text-anchor', 'middle').text(d => d.y + ' 年度');
-  g.append('rect').attr('class', 'hit').attr('x', d => x(d.y) - 20).attr('width', bw + 40).attr('y', T).attr('height', H - B - T)
-    .on('mousemove', (e, d) => { const top = C.filter(c => c['due_' + d.y] > 0).sort((a, b) => b['due_' + d.y] - a['due_' + d.y]).slice(0, 4).map(c => `${c.county} ${c['due_' + d.y]}`).join('、');
-      showTip(e, `<b>${d.y} 年度：${d.a + d.b} 家</b><br>效期到期 ${d.a} 家${d.b ? '<br>前次不合格 ' + d.b + ' 家' : ''}<br><span style="color:var(--text-secondary)">效期到期最多：${top}</span>`); })
-    .on('mouseleave', hideTip);
+  svg.append('g').selectAll('text').data(YRS).join('text').attr('x', d => x(d) + x.bandwidth() / 2).attr('y', H - 8).attr('text-anchor', 'middle').text(d => d + ' 年');
+  const layer = svg.append('g'), bw = x.bandwidth(), rr = 4;
+  const top = (x0, y1, h) => h <= 0 ? '' : `M${x0},${y1 + Math.min(rr, h)}a${rr},${rr} 0 0 1 ${rr},-${Math.min(rr, h)}h${bw - 2 * rr}a${rr},${rr} 0 0 1 ${rr},${Math.min(rr, h)}`;
+  function draw(six){
+    const cur = six ? P6 : P4, oth = six ? P4 : P6;
+    document.getElementById('ghostlbl').textContent = six ? '虛線框：現制 4 年' : '虛線框：新制 6 年';
+    layer.selectAll('*').remove();
+    const g = layer.selectAll('g').data(cur).join('g');
+    g.filter(d => d.b === 0).append('rect').attr('x', d => x(d.y)).attr('width', bw).attr('y', d => y(d.a) + (d.a > 0 ? rr : 0)).attr('height', d => Math.max(0, y(0) - y(d.a) - (d.a > 0 ? rr : 0))).attr('fill', 'var(--series-1)');
+    g.filter(d => d.b === 0 && d.a > 0).append('path').attr('fill', 'var(--series-1)').attr('d', d => top(x(d.y), y(d.a), y(0) - y(d.a)) + `V${y(d.a) + rr + 1}H${x(d.y)}z`);
+    g.filter(d => d.b > 0).append('rect').attr('x', d => x(d.y)).attr('width', bw).attr('y', d => y(d.a)).attr('height', d => y(0) - y(d.a)).attr('fill', 'var(--series-1)');
+    g.filter(d => d.b > 0).append('path').attr('fill', 'var(--series-2)').attr('d', d => { const y0 = y(d.a) - 2, y1 = y(d.a + d.b); return `M${x(d.y)},${y0}V${y1 + rr}a${rr},${rr} 0 0 1 ${rr},-${rr}h${bw - 2 * rr}a${rr},${rr} 0 0 1 ${rr},${rr}V${y0}z`; });
+    g.append('rect').attr('x', (d, i) => x(d.y) + 1).attr('width', bw - 2).attr('y', (d, i) => y(oth[i].a + oth[i].b)).attr('height', (d, i) => y(0) - y(oth[i].a + oth[i].b))
+      .attr('fill', 'none').attr('stroke', 'var(--text-secondary)').attr('stroke-dasharray', '4 3').attr('stroke-width', 1.2)
+      .style('display', (d, i) => (oth[i].a + oth[i].b) === (d.a + d.b) ? 'none' : null);
+    g.append('text').attr('class', 'lbl').attr('x', d => x(d.y) + bw / 2).attr('y', d => y(d.a + d.b) - 8).attr('text-anchor', 'middle').style('font-weight', 600).text(d => d.a + d.b);
+    g.append('rect').attr('class', 'hit').attr('x', d => x(d.y) - 6).attr('width', bw + 12).attr('y', T).attr('height', H - B - T)
+      .on('mousemove', (e, d) => { const i = YRS.indexOf(d.y), o = oth[i];
+        showTip(e, `<b>${d.y} 年度：${d.a + d.b} 家</b>（${six ? '新制' : '現制'}）<br>${d.src.length ? d.src.join('<br>') : '無機構到期'}<br><span style="color:var(--text-secondary)">${six ? '現制 4 年' : '新制 6 年'}：${o.a + o.b} 家</span>`); })
+      .on('mouseleave', hideTip);
+  }
+  const b6 = document.getElementById('bt-six'), b4 = document.getElementById('bt-four');
+  const set = six => { hideTip(); b6.setAttribute('aria-pressed', six); b4.setAttribute('aria-pressed', !six); draw(six); };
+  b6.onclick = () => set(true); b4.onclick = () => set(false); set(true);
 })();
-document.getElementById('ins3').innerHTML = `<b>初步發現：</b>受評家數逐年起伏很大：115 年度約 ${due115} 家，116 年度只有 ${DATA.due[116]} 家，118 年度則高達 ${DATA.due[118]} 家，是 116 年度的 5 倍。若委員人力與預算按年平均編列，118 年度可能出現排程壓力，建議提早規劃，或研議調整部分機構的效期分布。`;
+const cohort = [115, 116, 117, 118].reduce((s, y) => s + (DATA.due[y] || 0), 0) + N.failed;
+const tot = P => P.reduce((s, d) => s + d.a + d.b, 0);
+const zero6 = P6.filter(d => d.a + d.b === 0).map(d => d.y + ' 年');
+const peak6 = P6.filter(d => d.y > 119).sort((a, b) => (b.a + b.b) - (a.a + a.b))[0];
+document.getElementById('ins3').innerHTML = `<b>初步發現：</b>115～119 年的受評量不受新制影響（115～118 年效期已核定，115 年受評者仍為 4 年），118 年仍有 ${DATA.due[118]} 家的高峰。改為 6 年後，${zero6.join('、')}幾乎沒有機構到期，接著 122～124 年依序回到 ${P6[7].a + P6[7].b}、${P6[8].a + P6[8].b}、${P6[9].a + P6[9].b} 家，高峰移到 ${peak6.y} 年。115～124 年合計受評量由 ${tot(P4)} 家次降為 ${tot(P6)} 家次；長期平均每年約由 ${Math.round(cohort / 4)} 家降為 ${Math.round(cohort / 6)} 家。新制減輕整體負擔，但會出現空窗年，高峰也沒有消失，評鑑委託預算、委員人力與承辦團隊的連續性都需要提前規劃。`;
 
 // ---------- answers in question cards ----------
 (function(){
@@ -407,12 +439,11 @@ document.getElementById('ins3').innerHTML = `<b>初步發現：</b>受評家數�
     <li>集中在<b>${most.county}</b>（${most.failed} 家，占受評 ${pct(most.failed, most.n)}）；${rate.map(c => `${c.county} ${pct(c.failed, c.n)}`).join('、')}的比率也偏高（受評家數較少）。</li>
     <li>規模越小越容易不合格：未滿 50 床 ${sz[0].fail_rate.toFixed(1)}%、50–99 床 ${sz[1].fail_rate.toFixed(1)}%，100–149 床 ${sz[2].fail_rate.toFixed(1)}%，150 床以上 ${sz[3].fail_rate.toFixed(1)}%。</li>
     <li>獨立型 ${ty['獨立型'].fail_rate.toFixed(1)}%，高於醫院／法人附設型 ${ty['醫院/法人附設型'].fail_rate.toFixed(1)}%。</li></ul><a href="#q2">看 Q2 評鑑結果 ↓</a>`;
-  const yrs = [115, 116, 117, 118].map(y => ({y, n: (DATA.due[y] || 0) + (y === 115 ? N.failed : 0)}));
-  const pk = [...yrs].sort((a, b) => b.n - a.n)[0], lw = [...yrs].sort((a, b) => a.n - b.n)[0];
+  const n = d => d.a + d.b, z = P6.filter(d => n(d) === 0).map(d => d.y);
   document.getElementById('a3').innerHTML = `<span class="tag">初步回答</span><ul>
-    <li>${yrs.map(x => `${x.y} 年 <b>${x.n}</b> 家`).join('、')}。</li>
-    <li>115 年含效期到期 ${DATA.due[115]} 家與前次不合格 ${N.failed} 家。</li>
-    <li>高峰在 <b>${pk.y} 年</b>，是 ${lw.y} 年的 ${(pk.n / lw.n).toFixed(1)} 倍；委員人力與預算宜提前規劃，或研議分散效期。</li></ul><a href="#q3">看 Q3 排程推估 ↓</a>`;
+    <li>115～119 年不受新制影響：${P6.slice(0, 5).map(d => `${d.y} 年 <b>${n(d)}</b>`).join('、')} 家。</li>
+    <li>116 年起效期改 6 年：<b>${z.join('、')} 年</b>幾乎沒有機構到期，122～124 年再回到 ${P6.slice(7).map(n).join('、')} 家。</li>
+    <li>長期平均每年受評量約由 <b>${Math.round(cohort / 4)}</b> 家降為 <b>${Math.round(cohort / 6)}</b> 家，但 213 家的高峰仍在，需預先規劃空窗年與高峰年的人力。</li></ul><a href="#q3">看 Q3 排程推估 ↓</a>`;
 })();
 // ---------- table ----------
 const q2c = Object.fromEntries(DATA.q2.county.map(x => [x.county, x]));
