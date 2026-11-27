@@ -43,7 +43,12 @@ h3{font-size:16px;margin:0 0 2px}
 .kpi .v{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.2}
 .kpi .l{font-size:13px;color:var(--text-secondary)}
 .kpi .n{font-size:12px;color:var(--text-secondary);margin-top:4px}
-.mapgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.mapgrid>.card{display:flex;flex-direction:column}
+.mapgrid .chead{min-height:64px}
+.mapgrid .chead h3+.sub{margin-bottom:0}
+.mapgrid svg{display:block;width:100%;aspect-ratio:460/600;height:auto}
+.mapgrid .cfoot{min-height:44px;margin-top:8px}
 .toggle{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
 .toggle button{font:inherit;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--surface-1);color:var(--text-primary);cursor:pointer}
 .toggle button[aria-pressed="true"]{background:var(--text-primary);color:var(--surface-1);border-color:var(--text-primary)}
@@ -113,20 +118,25 @@ footer a{color:var(--accent)}
 <div class="selbar" id="sel" aria-live="polite"></div>
 <div class="mapgrid">
   <div class="card">
-    <div class="toggle" role="group" aria-label="地圖圖層">
-      <button id="bt-choro" aria-pressed="true">縣市床位密度</button>
-      <button id="bt-pts" aria-pressed="false">機構位置與評鑑結果</button>
+    <div class="chead">
+      <div class="toggle" role="group" aria-label="地圖圖層">
+        <button id="bt-choro" aria-pressed="true">縣市床位密度</button>
+        <button id="bt-pts" aria-pressed="false">機構位置與評鑑結果</button>
+      </div>
     </div>
-    <svg id="map" viewBox="0 0 460 600" width="100%" role="img" aria-label="臺灣各縣市每千名長者護理之家床位數地圖"></svg>
-    <div class="legend" id="maplegend"></div>
-    <p class="note" style="margin:6px 0 0">金門縣、連江縣未繪於地圖，數值見下方表格。不合格年度依衛福部 113、114 年度一般護理之家評鑑結果名單比對：40 家不合格機構皆為 114 年度評鑑結果，其中 6 家為 113、114 年度連續不合格。</p>
+    <svg id="map" viewBox="0 0 460 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="臺灣各縣市每千名長者護理之家床位數地圖"></svg>
+    <div class="legend cfoot" id="maplegend"></div>
   </div>
   <div class="card">
-    <h3>各縣市排序</h3>
-    <p class="sub">虛線為全國平均</p>
-    <svg id="bars" width="100%" role="img" aria-label="各縣市每千名長者床位數長條圖"></svg>
+    <div class="chead">
+      <h3>各縣市排序</h3>
+      <p class="sub">虛線為全國平均</p>
+    </div>
+    <svg id="bars" preserveAspectRatio="xMidYMid meet" role="img" aria-label="各縣市每千名長者床位數長條圖"></svg>
+    <div class="legend cfoot"><span><i class="sw" style="background:var(--series-1)"></i>高於全國平均</span><span><i class="sw" style="background:var(--series-2)"></i>低於全國平均</span></div>
   </div>
 </div>
+<p class="note" style="margin:10px 0 0">金門縣、連江縣未繪於地圖，數值見下方表格。不合格年度依衛福部 113、114 年度一般護理之家評鑑結果名單比對：40 家不合格機構皆為 114 年度評鑑結果，其中 6 家為 113、114 年度連續不合格。</p>
 <p class="insight" id="ins1"></p>
 
 <h2>Q2｜評鑑結果</h2>
@@ -298,7 +308,7 @@ function hbar(sel, rows, {value, label, max, refLine, fill, valFmt, tipFn, barH 
   }
 }
 const ranked = [...C].sort((a, b) => b.beds_per_1k65 - a.beds_per_1k65);
-hbar('#bars', ranked, {value: d => d.beds_per_1k65, label: d => d.county, max: 28, refLine: N.beds_per_1k65, barH: 14,
+hbar('#bars', ranked, {value: d => d.beds_per_1k65, label: d => d.county, max: 28, refLine: N.beds_per_1k65, barH: 20,
   fill: d => d.beds_per_1k65 < N.beds_per_1k65 ? 'var(--series-2)' : 'var(--series-1)',
   valFmt: d => d.beds === 0 ? '無一般護理之家' : d.beds_per_1k65.toFixed(1),
   pick: d => d.county,
@@ -327,7 +337,6 @@ function hover(c){ apply(c || locked); }
 function toggleLock(c){ locked = locked === c ? null : c; apply(locked); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && locked) toggleLock(locked); });
 apply(null);
-document.querySelector('#bars').insertAdjacentHTML('afterend', `<div class="legend"><span><i class="sw" style="background:var(--series-1)"></i>高於全國平均</span><span><i class="sw" style="background:var(--series-2)"></i>低於全國平均</span></div>`);
 const low = ranked.filter(c => c.beds_per_1k65 < N.beds_per_1k65 && c.beds > 0).map(c => c.county);
 document.getElementById('ins1').innerHTML = `<b>初步發現：</b>全國平均每千名長者有 ${N.beds_per_1k65.toFixed(1)} 張一般護理之家床位，縣市間差距超過 10 倍：嘉義市 ${byC['嘉義市'].beds_per_1k65.toFixed(1)}、新竹縣 ${byC['新竹縣'].beds_per_1k65.toFixed(1)} 最高，臺北市僅 ${byC['臺北市'].beds_per_1k65.toFixed(1)}，金門縣則沒有一般護理之家。共 ${low.length} 個縣市低於全國平均，包括人口最多的新北市與高雄市。`;
 
