@@ -38,8 +38,15 @@ h3{font-size:16px;margin:0 0 2px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .qcards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.qcards .card b{display:block;font-size:13px;color:var(--accent);margin-bottom:4px}
+.qcards .card>b{display:block;font-size:13px;color:var(--accent);margin-bottom:4px}
 .qcards .card p{margin:0;font-size:15px}
+.qcards>.card{display:flex;flex-direction:column}
+@media (min-width:821px){.qcards .card>p{min-height:5.1em}}
+.qcards .ans{margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:14.5px;flex:1;display:flex;flex-direction:column}
+.qcards .ans .tag{display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;color:var(--surface-1);background:var(--accent);border-radius:999px;padding:1px 9px;margin-bottom:6px}
+.qcards .ans ul{margin:0;padding-left:18px}.qcards .ans li{margin-bottom:4px}
+.qcards .ans a{margin-top:auto;padding-top:8px;font-size:13px;color:var(--accent);text-decoration:none}
+.qcards .ans a:hover{text-decoration:underline}
 .kpi .v{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.2}
 .kpi .l{font-size:13px;color:var(--text-secondary)}
 .kpi .n{font-size:12px;color:var(--text-secondary);margin-top:4px}
@@ -102,18 +109,19 @@ footer a{color:var(--accent)}
   <p style="margin:0">但相關資訊散落在不同地方：機構清冊是 CSV、評鑑結果以 PDF 名單公告、人口統計在另一個系統。評鑑規劃人員要回答「哪裡床位不足」「明年要評幾家、分布在哪」這類問題，往往得手動整理。本專案把這些資料串起來，做成一頁可互動、可重複更新的視覺化。</p>
 </div>
 
-<h2>要回答的問題</h2>
+<h2>要回答的問題與初步回答</h2>
+<p class="sub">回答依下方圖表的資料自動計算；細節與互動圖表請見各節。</p>
 <div class="qcards">
-  <div class="card"><b>Q1 資源分布</b><p>各縣市每千名 65 歲以上長者有幾張一般護理之家床位？哪些地區相對不足？</p></div>
-  <div class="card"><b>Q2 評鑑結果</b><p>評鑑不合格的機構集中在哪些縣市？機構規模、類型與結果有沒有關聯？</p></div>
-  <div class="card"><b>Q3 評鑑排程</b><p>依合格效期推算，未來四年每年各有多少機構要受評？可做為委員人力與時程規劃依據。</p></div>
+  <div class="card"><b>Q1 資源分布</b><p>各縣市每千名 65 歲以上長者有幾張一般護理之家床位？哪些地區相對不足？</p><div class="ans" id="a1"></div></div>
+  <div class="card"><b>Q2 評鑑結果</b><p>評鑑不合格的機構集中在哪些縣市？機構規模、類型與結果有沒有關聯？</p><div class="ans" id="a2"></div></div>
+  <div class="card"><b>Q3 評鑑排程</b><p>依合格效期推算，未來四年每年各有多少機構要受評？可做為委員人力與時程規劃依據。</p><div class="ans" id="a3"></div></div>
 </div>
 
 <h2>雛形成果</h2>
 <p class="sub">資料時點：機構清冊 114 年 12 月版；人口為 114 年 12 月底戶籍人口。</p>
 <div class="grid4" id="kpis"></div>
 
-<h2 style="margin-top:36px">Q1｜每千名長者的護理之家床位數</h2>
+<h2 id="q1" style="margin-top:36px">Q1｜每千名長者的護理之家床位數</h2>
 <p class="sub">床位數 ÷ 65 歲以上人口 × 1,000。圖例由左到右代表床位由少到多；切換「機構位置」可看每家機構的評鑑結果。地圖與右側排序互相連動。</p>
 <div class="selbar" id="sel" aria-live="polite"></div>
 <div class="mapgrid">
@@ -139,7 +147,7 @@ footer a{color:var(--accent)}
 <p class="note" style="margin:10px 0 0">金門縣、連江縣未繪於地圖，數值見下方表格。不合格年度依衛福部 113、114 年度一般護理之家評鑑結果名單比對：40 家不合格機構皆為 114 年度評鑑結果，其中 6 家為 113、114 年度連續不合格。</p>
 <p class="insight" id="ins1"></p>
 
-<h2>Q2｜評鑑結果</h2>
+<h2 id="q2">Q2｜評鑑結果</h2>
 <p class="sub">依清冊中各機構最近一次評鑑結果（1 家尚未評鑑不列入）。</p>
 <div class="grid2">
   <div class="card">
@@ -157,7 +165,7 @@ footer a{color:var(--accent)}
 </div>
 <p class="insight" id="ins2"></p>
 
-<h2>Q3｜未來評鑑排程推估</h2>
+<h2 id="q3">Q3｜未來評鑑排程推估</h2>
 <p class="sub">合格效期到期的年度即為下次受評年度；前次評鑑不合格者，假設於 115 年度再受評。</p>
 <div class="card">
   <svg id="due" width="100%" role="img" aria-label="115至118年度應受評機構數"></svg>
@@ -376,6 +384,34 @@ document.getElementById('ins2').innerHTML = `<b>初步發現：</b>不合格機�
 })();
 document.getElementById('ins3').innerHTML = `<b>初步發現：</b>受評家數逐年起伏很大：115 年度約 ${due115} 家，116 年度只有 ${DATA.due[116]} 家，118 年度則高達 ${DATA.due[118]} 家，是 116 年度的 5 倍。若委員人力與預算按年平均編列，118 年度可能出現排程壓力，建議提早規劃，或研議調整部分機構的效期分布。`;
 
+// ---------- answers in question cards ----------
+(function(){
+  const pct = (a, b) => (a / b * 100).toFixed(0) + '%';
+  const r = [...C].filter(c => c.beds > 0).sort((a, b) => b.beds_per_1k65 - a.beds_per_1k65);
+  const hi = r.slice(0, 2), lo = r[r.length - 1], below = r.filter(c => c.beds_per_1k65 < N.beds_per_1k65);
+  const none = C.filter(c => c.beds === 0).map(c => c.county);
+  const big = ['新北市','高雄市','臺北市','臺中市','桃園市','臺南市'].filter(k => byC[k].beds_per_1k65 < N.beds_per_1k65);
+  document.getElementById('a1').innerHTML = `<span class="tag">初步回答</span><ul>
+    <li>全國平均每千名長者 <b>${N.beds_per_1k65.toFixed(1)}</b> 床，縣市差距大。</li>
+    <li>最多：${hi.map(c => `${c.county} ${c.beds_per_1k65.toFixed(1)}`).join('、')}；最少：${lo.county} ${lo.beds_per_1k65.toFixed(1)}${none.length ? '，' + none.join('、') + '無一般護理之家' : ''}。</li>
+    <li><b>${below.length}</b> 個縣市低於平均，直轄市中包括${big.join('、')}，是相對不足的區域。</li>
+    <li>臺北市偏低可能與住宿式長照、老人福利機構較多有關，這些機構本分析未納入。</li></ul><a href="#q1">看 Q1 地圖與排序 ↓</a>`;
+  const ev = C.filter(c => c.passed + c.failed > 0).map(c => ({...c, fr: c.failed / (c.passed + c.failed)}));
+  const most = [...ev].sort((a, b) => b.failed - a.failed)[0];
+  const rate = ev.filter(c => c.fr >= .2 && c.county !== most.county).sort((a, b) => b.fr - a.fr);
+  const sz = DATA.size, ty = Object.fromEntries(DATA.types.map(x => [x.type, x]));
+  document.getElementById('a2').innerHTML = `<span class="tag">初步回答</span><ul>
+    <li>不合格 <b>${N.failed}</b> 家，占已評鑑機構 ${pct(N.failed, N.passed + N.failed)}；其中 ${DATA.failsum['113、114 年度連續不合格'] || 0} 家連續兩年不合格。</li>
+    <li>集中在<b>${most.county}</b>（${most.failed} 家，占 ${pct(most.failed, most.passed + most.failed)}）；${rate.map(c => `${c.county} ${pct(c.failed, c.passed + c.failed)}`).join('、')}的比率也偏高。</li>
+    <li>規模越小越容易不合格：${sz[0].beds} ${sz[0].fail_rate}%，${sz[sz.length - 1].beds} ${sz[sz.length - 1].fail_rate}%。</li>
+    <li>獨立型 ${ty['獨立型'].fail_rate}%，略高於附設型 ${ty['醫院/法人附設型'].fail_rate}%，差異不大。</li></ul><a href="#q2">看 Q2 評鑑結果 ↓</a>`;
+  const yrs = [115, 116, 117, 118].map(y => ({y, n: (DATA.due[y] || 0) + (y === 115 ? N.failed : 0)}));
+  const pk = [...yrs].sort((a, b) => b.n - a.n)[0], lw = [...yrs].sort((a, b) => a.n - b.n)[0];
+  document.getElementById('a3').innerHTML = `<span class="tag">初步回答</span><ul>
+    <li>${yrs.map(x => `${x.y} 年 <b>${x.n}</b> 家`).join('、')}。</li>
+    <li>115 年含效期到期 ${DATA.due[115]} 家與前次不合格 ${N.failed} 家。</li>
+    <li>高峰在 <b>${pk.y} 年</b>，是 ${lw.y} 年的 ${(pk.n / lw.n).toFixed(1)} 倍；委員人力與預算宜提前規劃，或研議分散效期。</li></ul><a href="#q3">看 Q3 排程推估 ↓</a>`;
+})();
 // ---------- table ----------
 const cols = [['county', '縣市'], ['n', '機構數'], ['beds', '床位數'], ['pop65_114', '65歲以上人口'], ['pct65', '老年人口比率%'], ['beds_per_1k65', '每千名長者床位'], ['failed', '不合格家數'], ['pass_rate', '合格率%'], ['due_115', '115效期到期'], ['due_118', '118效期到期']];
 let sortK = 'beds_per_1k65', asc = false;
